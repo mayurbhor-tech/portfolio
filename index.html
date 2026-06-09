@@ -98,4 +98,23 @@ body:has(button:hover) #cursor-inner {
 
 /* cursor scan rotate */
 
+* cursor scan rotate */
+#cursor-outer {
+  animation: cursor-rotate 4s linear infinite;
+}
+@keyframes cursor-rotate {
+  from { --rot: 0deg; }
+  to   { --rot: 360deg; }
+}
+
+/* ============================================================
+   BACKGROUND LAYERS
+============================================================ */
+#matrix-canvas {
+  position: fixed; top:0; left:0;
+  width:100%; height:100%;
+  z-index:0; opacity:0.09;
+  pointer-events:none;
+}
+
 
