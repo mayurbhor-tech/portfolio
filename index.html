@@ -50,5 +50,25 @@ body {
   box-shadow: 0 0 10px var(--green), inset 0 0 6px rgba(0,255,65,0.1);
   mix-blend-mode: screen;
 }
+cursor-inner {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 8px var(--green), 0 0 16px var(--green);
+  transition: width 0.15s, height 0.15s, background 0.15s;
+}
+
+/* crosshair lines */
+#cursor-outer::before,
+#cursor-outer::after {
+  content: '';
+  position: absolute;
+  background: var(--green);
+  opacity: 0.6;
+}
 
 
