@@ -70,5 +70,32 @@ cursor-inner {
   background: var(--green);
   opacity: 0.6;
 }
+#cursor-outer::before {
+  width: 1px; height: 10px;
+  left: 50%; top: -14px;
+  transform: translateX(-50%);
+  box-shadow: 0 28px 0 var(--green);
+}
+#cursor-outer::after {
+  width: 10px; height: 1px;
+  top: 50%; left: -14px;
+  transform: translateY(-50%);
+  box-shadow: 28px 0 0 var(--green);
+}
+
+body:has(a:hover) #cursor-outer,
+body:has(button:hover) #cursor-outer {
+  width: 52px; height: 52px;
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px var(--cyan);
+}
+body:has(a:hover) #cursor-inner,
+body:has(button:hover) #cursor-inner {
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  width: 10px; height: 10px;
+}
+
+/* cursor scan rotate */
 
 
