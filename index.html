@@ -331,6 +331,1432 @@ btn::before {
    SECTIONS
 ============================================================ */
 section { position:relative; z-index:2; padding:90px 8%; }
+   .section-header {
+  display:flex; align-items:center; gap:16px; margin-bottom:50px;
+}
+.section-header::before {
+  content:'//'; font-family:'Orbitron',monospace;
+  color:var(--red); font-size:1.2rem;
+}
+.section-title {
+  font-family:'Orbitron',monospace; font-size:1.3rem; font-weight:700;
+  color:var(--green); letter-spacing:4px; text-transform:uppercase;
+  text-shadow:0 0 15px rgba(0,255,65,0.3);
+}
+.section-header::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(90deg,var(--border),transparent);
+}
+
+/* ============================================================
+   PANEL
+============================================================ */
+.panel {
+  background:var(--panel); border:1px solid var(--border);
+  border-radius:2px; padding:28px 32px;
+  position:relative; transition:0.3s;
+}
+.panel::before {
+  content:''; position:absolute; top:0; left:0;
+  width:3px; height:0; background:var(--green);
+  box-shadow:0 0 10px var(--green); transition:0.4s;
+}
+.panel:hover::before { height:100%; }
+.panel:hover { border-color:rgba(0,255,65,0.35); background:rgba(0,255,65,0.06); }
+
+/* corner deco on panels */
+.panel::after {
+  content:''; position:absolute; bottom:0; right:0;
+  width:16px; height:16px;
+  border-right:1px solid rgba(0,255,65,0.3);
+  border-bottom:1px solid rgba(0,255,65,0.3);
+}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about-layout {
+  display:grid; grid-template-columns:1fr 300px; gap:24px; align-items:start;
+}
+.about-avatar-wrap {
+  display:flex; flex-direction:column; gap:16px;
+}
+.avatar-frame {
+  border:1px solid var(--border); padding:12px;
+  background:rgba(0,255,65,0.03); position:relative;
+  text-align:center;
+}
+.avatar-frame::before,
+.avatar-frame::after {
+  content:''; position:absolute; width:20px; height:20px;
+}
+.avatar-frame::before { top:0; left:0; border-top:2px solid var(--green); border-left:2px solid var(--green); }
+.avatar-frame::after  { bottom:0; right:0; border-bottom:2px solid var(--green); border-right:2px solid var(--green); }
+
+.avatar-svg {
+  width:100%; max-width:220px; margin:0 auto; display:block;
+}
+
+.prompt-line {
+  display:flex; gap:10px; line-height:1.9; font-size:0.88rem; color:var(--text);
+}
+.prompt-line .arrow { color:var(--green); flex-shrink:0; }
+
+.info-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px;
+}
+.info-item { font-size:0.75rem; display:flex; gap:8px; color:rgba(184,255,202,0.7); }
+.info-item .key { color:var(--cyan); }
+
+/* ============================================================
+   SKILLS
+============================================================ */
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.skill-cat-title {
+  font-family:'Orbitron',monospace; font-size:0.7rem; letter-spacing:3px;
+  color:var(--cyan); margin-bottom:18px; text-transform:uppercase;
+  display:flex; align-items:center; gap:8px;
+}
+.skill-cat-title::before { content:'▶'; color:var(--green); font-size:0.6rem; }
+.skill-tags { display:flex; flex-wrap:wrap; gap:8px; }
+.tag {
+  font-size:0.7rem; padding:5px 12px;
+  border:1px solid rgba(0,255,65,0.25); color:var(--green-dim);
+  letter-spacing:1px; border-radius:1px; transition:0.2s;
+  background:rgba(0,255,65,0.03);
+}
+.tag:hover {
+  border-color:var(--green); color:var(--green);
+  background:rgba(0,255,65,0.1); box-shadow:0 0 8px rgba(0,255,65,0.2);
+}
+
+.skill-bar-list { display:flex; flex-direction:column; gap:12px; }
+.skill-bar-label {
+  display:flex; justify-content:space-between;
+  font-size:0.72rem; margin-bottom:5px; color:var(--text);
+}
+.skill-bar-label span { color:var(--green-dim); }
+.skill-bar-track {
+  height:4px; background:rgba(0,255,65,0.1);
+  overflow:hidden; position:relative;
+}
+.skill-bar-fill {
+  height:100%;
+  background:linear-gradient(90deg,var(--green-dim),var(--green));
+  box-shadow:0 0 8px var(--green);
+  animation:bar-load 1.2s ease-out forwards;
+  transform-origin:left; transform:scaleX(0);
+}
+@keyframes bar-load { to{transform:scaleX(1)} }
+
+/* ============================================================
+   EXPERIENCE
+============================================================ */
+.exp-grid { display:flex; flex-direction:column; gap:20px; }
+
+.exp-card-inner {
+  display:grid; grid-template-columns:80px 1fr auto; gap:20px; align-items:center;
+}
+
+.exp-icon-wrap {
+  width:72px; height:72px; flex-shrink:0;
+  border:1px solid var(--border);
+  background:rgba(0,255,65,0.05);
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.exp-icon-wrap::before {
+  content:''; position:absolute; inset:3px;
+  border:1px solid rgba(0,255,65,0.1);
+}
+
+.exp-role {
+  font-family:'Orbitron',monospace; font-size:0.85rem;
+  color:var(--green); letter-spacing:2px; margin-bottom:4px;
+}
+.exp-company { font-size:0.75rem; color:var(--cyan); margin-bottom:8px; letter-spacing:1px; }
+.exp-desc { font-size:0.78rem; color:rgba(184,255,202,0.65); line-height:1.7; }
+
+.exp-badge {
+  font-size:0.62rem; letter-spacing:1.5px; padding:4px 10px;
+  border:1px solid; text-align:center; white-space:nowrap; align-self:flex-start;
+}
+.badge-active { border-color:var(--green); color:var(--green); box-shadow:0 0 8px rgba(0,255,65,0.2); animation:blink 2s infinite; }
+.badge-done { border-color:rgba(0,240,255,0.4); color:var(--cyan); }
+
+/* ============================================================
+   EDUCATION
+============================================================ */
+.edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.edu-card-inner { display:flex; gap:16px; align-items:flex-start; }
+.edu-icon-wrap {
+  width:60px; height:60px; flex-shrink:0;
+  border:1px solid var(--border); background:rgba(0,255,65,0.05);
+  display:flex; align-items:center; justify-content:center;
+}
+.edu-degree { font-family:'Orbitron',monospace; font-size:0.8rem; color:var(--green); letter-spacing:2px; margin-bottom:6px; }
+.edu-school { font-size:0.78rem; color:var(--cyan); margin-bottom:4px; }
+.edu-year { font-size:0.68rem; color:rgba(184,255,202,0.45); letter-spacing:2px; }
+
+/* ============================================================
+   CERTIFICATIONS
+============================================================ */
+.cert-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+.cert-item {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:16px 18px;
+  background:rgba(0,255,65,0.03); border:1px solid rgba(0,255,65,0.12);
+  transition:0.3s;
+}
+.cert-item:hover { border-color:rgba(0,255,65,0.3); background:rgba(0,255,65,0.06); }
+.cert-icon { color:var(--green); font-size:0.9rem; flex-shrink:0; margin-top:1px; }
+.cert-name { font-size:0.75rem; line-height:1.5; color:var(--text); }
+
+/* ============================================================
+   PROJECTS
+============================================================ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.35s;
+  display: flex;
+  flex-direction: column;
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.4s;
+}
+.project-card:hover::before { transform: scaleX(1); }
+.project-card:hover {
+  border-color: rgba(0,255,65,0.4);
+  background: rgba(0,255,65,0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,255,65,0.12);
+}
+
+.project-card:nth-child(2)::before {
+  background: linear-gradient(90deg, var(--cyan), #7b00ff);
+}
+.project-card:nth-child(3)::before {
+  background: linear-gradient(90deg, var(--red), var(--yellow));
+}
+
+/* top illustration area */
+.project-visual {
+  width: 100%;
+  height: 180px;
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.project-visual svg { max-width: 100%; max-height: 100%; }
+
+/* scanline overlay on image area */
+.project-visual::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
+  pointer-events: none;
+}
+
+.project-body { padding: 22px 24px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+.project-id {
+  font-size: 0.6rem; letter-spacing: 3px;
+  color: rgba(184,255,202,0.35); text-transform: uppercase;
+}
+
+.project-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--green); letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0,255,65,0.25);
+}
+.project-card:nth-child(2) .project-title { color: var(--cyan); text-shadow: 0 0 10px rgba(0,240,255,0.25); }
+.project-card:nth-child(3) .project-title { color: var(--red); text-shadow: 0 0 10px rgba(255,0,64,0.25); }
+
+.project-desc {
+  font-size: 0.78rem; line-height: 1.8;
+  color: rgba(184,255,202,0.72); flex: 1;
+}
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.project-tag {
+  font-size: 0.65rem; padding: 3px 10px;
+  border: 1px solid rgba(0,255,65,0.25);
+  color: var(--green-dim); letter-spacing: 0.5px;
+  background: rgba(0,255,65,0.04);
+  border-radius: 1px;
+  transition: 0.2s;
+}
+.project-card:nth-child(2) .project-tag { border-color: rgba(0,240,255,0.25); color: var(--cyan); background: rgba(0,240,255,0.04); }
+.project-card:nth-child(3) .project-tag { border-color: rgba(255,0,64,0.25); color: #ff6680; background: rgba(255,0,64,0.04); }
+
+.project-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,255,65,0.1);
+  font-size: 0.68rem; letter-spacing: 1.5px;
+}
+.project-status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 6px var(--green);
+  display: inline-block; margin-right: 6px;
+  animation: blink 1.4s infinite;
+}
+.project-status { color: var(--green-dim); display: flex; align-items: center; }
+
+/* corner decoration */
+.project-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 20px; height: 20px;
+  border-right: 1px solid rgba(0,255,65,0.3);
+  border-bottom: 1px solid rgba(0,255,65,0.3);
+}
+
+/* ============================================================
+   THOUGHTS
+============================================================ */
+.thoughts-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+.thought-card {
+  border-left:3px solid var(--green); padding:20px 24px;
+  background:rgba(0,255,65,0.03);
+  border-top:1px solid rgba(0,255,65,0.1);
+  border-right:1px solid rgba(0,255,65,0.1);
+  border-bottom:1px solid rgba(0,255,65,0.1);
+  transition:0.3s;
+}
+.thought-card:hover { background:rgba(0,255,65,0.06); }
+.thought-card:nth-child(2) { border-left-color:var(--cyan); }
+.thought-card:nth-child(3) { border-left-color:var(--red); }
+.thought-card:nth-child(4) { border-left-color:var(--yellow); }
+.thought-header {
+  font-family:'Orbitron',monospace; font-size:0.7rem; letter-spacing:2px;
+  color:var(--green); margin-bottom:12px; display:flex; align-items:center; gap:8px;
+}
+.thought-text { font-size:0.8rem; line-height:1.85; color:rgba(184,255,202,0.75); }
+
+/* ============================================================
+   AI ASSISTANT
+============================================================ */
+#ai-toggle {
+  position:fixed; bottom:28px; right:28px; z-index:5000;
+  width:58px; height:58px;
+  background:var(--dark2); border:2px solid var(--green);
+  border-radius:50%; cursor:none;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 0 20px rgba(0,255,65,0.4), 0 0 40px rgba(0,255,65,0.15);
+  transition:0.3s;
+  animation:ai-pulse 2.5s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { box-shadow:0 0 20px rgba(0,255,65,0.4),0 0 40px rgba(0,255,65,0.15); }
+  50%      { box-shadow:0 0 30px rgba(0,255,65,0.7),0 0 60px rgba(0,255,65,0.3); }
+}
+#ai-toggle:hover { transform:scale(1.1); }
+#ai-toggle svg { width:28px; height:28px; }
+
+#ai-panel {
+  position:fixed; bottom:100px; right:28px; z-index:4999;
+  width:360px; max-height:520px;
+  background:rgba(2,12,2,0.97);
+  border:1px solid var(--green);
+  box-shadow:0 0 30px rgba(0,255,65,0.25);
+  display:flex; flex-direction:column;
+  transform:translateY(20px) scale(0.95);
+  opacity:0; pointer-events:none;
+  transition:0.3s cubic-bezier(0.34,1.56,0.64,1);
+  border-radius:2px;
+}
+#ai-panel.open {
+  transform:translateY(0) scale(1);
+  opacity:1; pointer-events:all;
+}
+
+.ai-header {
+  padding:14px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.ai-header-title {
+  font-family:'Orbitron',monospace; font-size:0.75rem;
+  color:var(--green); letter-spacing:2px; flex:1;
+}
+.ai-header-status {
+  font-size:0.6rem; color:var(--green-dim);
+  display:flex; align-items:center; gap:4px;
+}
+#ai-close {
+  background:none; border:none; color:var(--red);
+  font-size:1rem; cursor:none; padding:0 4px;
+  transition:0.2s;
+}
+#ai-close:hover { color:var(--green); }
+
+.ai-messages {
+  flex:1; overflow-y:auto; padding:14px;
+  display:flex; flex-direction:column; gap:10px;
+  scrollbar-width:thin; scrollbar-color:var(--green-dim) transparent;
+}
+
+.ai-msg {
+  max-width:85%; padding:10px 14px;
+  font-size:0.78rem; line-height:1.6;
+}
+.ai-msg.bot {
+  background:rgba(0,255,65,0.07);
+  border:1px solid rgba(0,255,65,0.2);
+  border-radius:0 8px 8px 8px;
+  color:var(--text); align-self:flex-start;
+}
+.ai-msg.user {
+  background:rgba(0,240,255,0.08);
+  border:1px solid rgba(0,240,255,0.25);
+  border-radius:8px 0 8px 8px;
+  color:var(--cyan); align-self:flex-end;
+}
+.ai-msg.thinking {
+  background:rgba(0,255,65,0.04);
+  border:1px solid rgba(0,255,65,0.15);
+  border-radius:0 8px 8px 8px;
+  color:var(--green-dim); align-self:flex-start;
+  font-style:italic;
+}
+.ai-dot-anim::after {
+  content:'...';
+  animation:dots 1s steps(3) infinite;
+}
+@keyframes dots {
+  0%{content:'.'}
+  33%{content:'..'}
+  66%{content:'...'}
+}
+
+.ai-input-row {
+  padding:12px 14px;
+  border-top:1px solid var(--border);
+  display:flex; gap:8px; align-items:center;
+}
+.ai-input-row input {
+  flex:1; background:rgba(0,255,65,0.04);
+  border:1px solid rgba(0,255,65,0.2);
+  color:var(--green); font-family:'Share Tech Mono',monospace;
+  font-size:0.78rem; padding:8px 12px; outline:none;
+  transition:0.2s;
+}
+.ai-input-row input:focus { border-color:var(--green); box-shadow:0 0 8px rgba(0,255,65,0.2); }
+.ai-input-row input::placeholder { color:rgba(0,255,65,0.3); }
+.ai-send {
+  background:var(--green); border:none; color:var(--dark);
+  padding:8px 12px; font-family:'Share Tech Mono',monospace;
+  font-size:0.72rem; cursor:none; transition:0.2s;
+}
+.ai-send:hover { background:var(--green-dim); }
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.contact-label { font-size:0.62rem; letter-spacing:3px; color:rgba(184,255,202,0.45); text-transform:uppercase; }
+.contact-value { font-size:0.85rem; color:var(--green); }
+.contact-value a { color:inherit; text-decoration:none; transition:0.2s; }
+.contact-value a:hover { text-shadow:0 0 10px var(--green); }
+.location-val { color:var(--cyan); }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  position:relative; z-index:2;
+  border-top:1px solid var(--border);
+  background:var(--dark2);
+  padding:28px 8%;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:12px;
+}
+.footer-left { font-size:0.7rem; color:rgba(184,255,202,0.4); }
+.footer-cmd { font-size:0.7rem; color:var(--green-dim); }
+.footer-cmd::before { content:'$ '; color:var(--red); }
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:900px) {
+  .about-layout { grid-template-columns:1fr; }
+  .about-avatar-wrap { display:none; }
+}
+@media(max-width:768px) {
+  nav ul { display:none; }
+  .edu-grid,.contact-grid { grid-template-columns:1fr; }
+  .exp-card-inner { grid-template-columns:1fr; }
+  .exp-icon-wrap { display:none; }
+  .hero h1 { font-size:2.5rem; }
+  .stats-bar { gap:28px; }
+  .info-grid { grid-template-columns:1fr; }
+  #ai-panel { width:calc(100vw - 40px); right:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor-outer"></div>
+<div id="cursor-inner"></div>
+
+<!-- MATRIX BG -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MB<span>::</span>BHOR</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#thoughts">Insights</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-status"><div class="status-dot"></div>ONLINE &nbsp;|&nbsp; NASHIK, IND</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-corner tl"></div>
+  <div class="hero-corner br"></div>
+  <div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div>
+
+  <!-- floating hex SVGs -->
+  <svg class="hex-deco" style="top:15%;left:8%;width:80px" viewBox="0 0 100 100"><polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="#00ff41" stroke-width="1"/></svg>
+  <svg class="hex-deco" style="top:60%;left:3%;width:50px;animation-delay:2s" viewBox="0 0 100 100"><polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="#00f0ff" stroke-width="1"/></svg>
+  <svg class="hex-deco" style="top:20%;right:7%;width:65px;animation-delay:1s" viewBox="0 0 100 100"><polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="#ff0040" stroke-width="1"/></svg>
+  <svg class="hex-deco" style="top:70%;right:4%;width:40px;animation-delay:3s" viewBox="0 0 100 100"><polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" fill="none" stroke="#00ff41" stroke-width="1"/></svg>
+
+  <div class="hero-inner">
+    <div class="boot-text">[ SYSTEM BOOT ] &nbsp;|&nbsp; USER: <span>MAYUR_BHOR</span> &nbsp;|&nbsp; ACCESS: <span>GRANTED</span></div>
+    <div class="hero-tag">// Full Stack Dev &bull; AI/ML Enthusiast &bull; Builder</div>
+    <h1>MAYUR<span class="slash">/</span>BHOR</h1>
+    <div class="hero-subtitle">Full Stack Developer &nbsp;&bull;&nbsp; Python Developer &nbsp;&bull;&nbsp; AI/ML</div>
+    <div class="typewriter-wrap" id="typewriter"><span class="cur"></span></div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">&#62;_ INITIATE CONTACT</a>
+      <a href="https://www.linkedin.com/in/mayur-bhor-125998333" target="_blank" class="btn btn-outline">&#62;_ LINKEDIN</a>
+      <a href="#about" class="btn btn-cyan">&#62;_ EXPLORE</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar reveal">
+  <div class="stat-item"><span class="stat-num" data-target="3">0</span><span class="stat-label">Projects</span></div>
+  <div class="stat-item"><span class="stat-num" data-target="4">0</span><span class="stat-label">Internships</span></div>
+  <div class="stat-item"><span class="stat-num" data-target="18">0</span><span class="stat-label">Tech Skills</span></div>
+  <div class="stat-item"><span class="stat-num" data-target="5">0</span><span class="stat-label">Certifications</span></div>
+  <div class="stat-item"><span class="stat-num" data-target="3">0</span><span class="stat-label">Years Program</span></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal"><span class="section-title">About</span></div>
+  <div class="about-layout">
+    <div class="panel reveal">
+      <div class="prompt-line">
+        <span class="arrow">&#62;</span>
+        <span>Computer Science undergraduate at Sandip University, specializing in <strong style="color:var(--green)">AI/ML and Virtual Reality</strong>. I build scalable backends, intelligent systems, and full-stack web apps — turning complex real-world problems into clean, deployable solutions.</span>
+      </div>
+      <div class="prompt-line" style="margin-top:14px">
+        <span class="arrow">&#62;</span>
+        <span>Currently working as a <strong style="color:var(--cyan)">Python Developer at Pravara Infotech</strong>, with hands-on experience across FastAPI, Docker, AWS, Machine Learning, React, and MongoDB. Constantly learning, constantly building.</span>
+      </div>
+      <div class="info-grid" style="margin-top:22px">
+        <div class="info-item"><span class="key">location</span><span>Nashik, Maharashtra, India</span></div>
+        <div class="info-item"><span class="key">university</span><span>Sandip University</span></div>
+        <div class="info-item"><span class="key">degree</span><span>B.Sc CS (AI/ML & VR)</span></div>
+        <div class="info-item"><span class="key">status</span><span style="color:var(--green)">● Open to Opportunities</span></div>
+        <div class="info-item"><span class="key">focus</span><span>Backend · AI/ML · Cloud</span></div>
+        <div class="info-item"><span class="key">email</span><span>bhormayur15@gmail.com</span></div>
+      </div>
+    </div>
+    <div class="about-avatar-wrap reveal">
+      <div class="avatar-frame">
+        <!-- Developer SVG illustration -->
+        <svg class="avatar-svg" viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <!-- monitor -->
+          <rect x="30" y="40" width="160" height="110" rx="4" fill="none" stroke="#00ff41" stroke-width="1.5"/>
+          <rect x="38" y="48" width="144" height="94" fill="rgba(0,255,65,0.05)" stroke="rgba(0,255,65,0.2)" stroke-width="0.5"/>
+          <!-- screen content lines -->
+          <line x1="48" y1="62" x2="130" y2="62" stroke="#00ff41" stroke-width="1" opacity="0.8"/>
+          <line x1="48" y1="72" x2="155" y2="72" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+          <line x1="55" y1="82" x2="140" y2="82" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+          <line x1="55" y1="92" x2="120" y2="92" stroke="#00f0ff" stroke-width="1" opacity="0.4"/>
+          <line x1="48" y1="102" x2="160" y2="102" stroke="#ff0040" stroke-width="1" opacity="0.5"/>
+          <line x1="48" y1="112" x2="95" y2="112" stroke="#00ff41" stroke-width="1" opacity="0.6"/>
+          <!-- cursor blink on screen -->
+          <rect x="97" y="108" width="6" height="8" fill="#00ff41" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;0;0.9" dur="1s" repeatCount="indefinite"/>
+          </rect>
+          <!-- monitor stand -->
+          <line x1="110" y1="150" x2="110" y2="175" stroke="#00ff41" stroke-width="1.5"/>
+          <line x1="85" y1="175" x2="135" y2="175" stroke="#00ff41" stroke-width="1.5"/>
+          <!-- keyboard -->
+          <rect x="55" y="185" width="110" height="28" rx="2" fill="none" stroke="rgba(0,255,65,0.5)" stroke-width="1"/>
+          <rect x="60" y="189" width="8" height="6" rx="1" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <rect x="72" y="189" width="8" height="6" rx="1" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <rect x="84" y="189" width="8" height="6" rx="1" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <rect x="96" y="189" width="8" height="6" rx="1" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <rect x="108" y="189" width="8" height="6" rx="1" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <rect x="120" y="189" width="8" height="6" rx="1" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <rect x="132" y="189" width="8" height="6" rx="1" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <rect x="68" y="199" width="84" height="6" rx="1" fill="rgba(0,255,65,0.15)" stroke="rgba(0,255,65,0.3)" stroke-width="0.5"/>
+          <!-- glow effect -->
+          <circle cx="110" cy="97" r="50" fill="url(#glow)" opacity="0.15"/>
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00ff41"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+          <!-- floating code particles -->
+          <text x="10" y="30" font-family="monospace" font-size="8" fill="#00ff41" opacity="0.4">{}</text>
+          <text x="185" y="25" font-family="monospace" font-size="8" fill="#00f0ff" opacity="0.4">&lt;/&gt;</text>
+          <text x="15" y="230" font-family="monospace" font-size="7" fill="#ff0040" opacity="0.4">404</text>
+          <text x="178" y="240" font-family="monospace" font-size="7" fill="#00ff41" opacity="0.4">200</text>
+        </svg>
+        <div style="font-size:0.6rem;color:var(--green-dim);letter-spacing:2px;margin-top:8px;">MAYUR_BHOR.exe</div>
+      </div>
+      <div class="panel" style="padding:14px 16px;font-size:0.7rem;">
+        <div style="color:var(--red);margin-bottom:8px;font-family:'Orbitron',monospace;font-size:0.6rem;letter-spacing:2px;">SYSTEM INFO</div>
+        <div style="color:rgba(184,255,202,0.6);line-height:2">
+          OS: <span style="color:var(--green)">Linux Ubuntu</span><br>
+          IDE: <span style="color:var(--cyan)">VS Code</span><br>
+          Shell: <span style="color:var(--green)">Zsh</span><br>
+          Coffee: <span style="color:var(--yellow)">██████ 99%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal"><span class="section-title">Skills</span></div>
+  <div class="skills-grid">
+    <div class="panel skill-category reveal">
+      <div class="skill-cat-title">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">Java</span>
+        <span class="tag">JavaScript</span><span class="tag">HTML</span>
+        <span class="tag">CSS</span><span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="panel skill-category reveal">
+      <div class="skill-cat-title">Backend &amp; APIs</div>
+      <div class="skill-tags">
+        <span class="tag">FastAPI</span><span class="tag">REST APIs</span>
+        <span class="tag">Docker</span><span class="tag">Linux</span>
+      </div>
+    </div>
+    <div class="panel skill-category reveal">
+      <div class="skill-cat-title">Frontend</div>
+      <div class="skill-tags">
+        <span class="tag">React</span><span class="tag">HTML5</span>
+        <span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">UI Dev</span>
+      </div>
+    </div>
+    <div class="panel skill-category reveal">
+      <div class="skill-cat-title">Cloud &amp; Data</div>
+      <div class="skill-tags">
+        <span class="tag">AWS EC2</span><span class="tag">AWS S3</span>
+        <span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Cloud</span>
+      </div>
+    </div>
+    <div class="panel skill-category reveal" style="grid-column:1/-1">
+      <div class="skill-cat-title">Proficiency Index</div>
+      <div class="skill-bar-list">
+        <div class="skill-bar-item"><div class="skill-bar-label">Python <span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label">FastAPI / Backend <span>82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%;animation-delay:0.1s"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label">React / Frontend <span>76%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:76%;animation-delay:0.2s"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label">Machine Learning <span>70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%;animation-delay:0.3s"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label">AWS / Cloud <span>68%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:68%;animation-delay:0.4s"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal"><span class="section-title">Experience</span></div>
+  <div class="exp-grid">
+
+    <div class="panel reveal">
+      <div class="exp-card-inner">
+        <div class="exp-icon-wrap">
+          <!-- Python/backend SVG icon -->
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="36" height="36" rx="2" fill="none" stroke="#00ff41" stroke-width="1"/>
+            <text x="8" y="18" font-family="monospace" font-size="7" fill="#00ff41">def</text>
+            <text x="8" y="27" font-family="monospace" font-size="6" fill="#00f0ff">api()</text>
+            <text x="8" y="35" font-family="monospace" font-size="6" fill="#ff0040">&#x25BA;</text>
+          </svg>
+        </div>
+        <div>
+          <div class="exp-role">Python Developer</div>
+          <div class="exp-company">Pravara Infotech &nbsp;·&nbsp; Aug 2025 – Present</div>
+          <div class="exp-desc">Developing Python-based backend solutions. Working on API integrations, automation pipelines, and scalable server-side systems using FastAPI and Docker.</div>
+        </div>
+        <div class="exp-badge badge-active">● ACTIVE</div>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="exp-card-inner">
+        <div class="exp-icon-wrap">
+          <!-- Web dev SVG icon -->
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="36" height="26" rx="2" fill="none" stroke="#00f0ff" stroke-width="1"/>
+            <line x1="4" y1="15" x2="40" y2="15" stroke="#00f0ff" stroke-width="0.8"/>
+            <circle cx="9" cy="11.5" r="1.5" fill="#ff0040"/>
+            <circle cx="14" cy="11.5" r="1.5" fill="#ffe600"/>
+            <circle cx="19" cy="11.5" r="1.5" fill="#00ff41"/>
+            <text x="8" y="26" font-family="monospace" font-size="7" fill="#00f0ff">&lt;/&gt;</text>
+            <line x1="28" y1="34" x2="36" y2="34" stroke="#00f0ff" stroke-width="1"/>
+            <line x1="20" y1="34" x2="26" y2="34" stroke="#00ff41" stroke-width="1"/>
+          </svg>
+        </div>
+        <div>
+          <div class="exp-role">Web Development Intern</div>
+          <div class="exp-company">Cognifyz Technologies</div>
+          <div class="exp-desc">Built and styled web interfaces using HTML, CSS, JavaScript, and React. Contributed to UI development and component design.</div>
+        </div>
+        <div class="exp-badge badge-done">COMPLETED</div>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="exp-card-inner">
+        <div class="exp-icon-wrap">
+          <!-- Writing SVG icon -->
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="4" width="28" height="36" rx="1" fill="none" stroke="#00ff41" stroke-width="1"/>
+            <line x1="13" y1="13" x2="31" y2="13" stroke="#00ff41" stroke-width="1" opacity="0.8"/>
+            <line x1="13" y1="18" x2="31" y2="18" stroke="#00ff41" stroke-width="1" opacity="0.6"/>
+            <line x1="13" y1="23" x2="25" y2="23" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+            <line x1="13" y1="28" x2="31" y2="28" stroke="#00ff41" stroke-width="1" opacity="0.4"/>
+            <line x1="13" y1="33" x2="22" y2="33" stroke="#ff0040" stroke-width="1" opacity="0.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="exp-role">Content Writing Intern</div>
+          <div class="exp-company">Brainwave Matrix Solutions</div>
+          <div class="exp-desc">Produced technical and non-technical written content for digital platforms, strengthening communication and documentation skills.</div>
+        </div>
+        <div class="exp-badge badge-done">COMPLETED</div>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="exp-card-inner">
+        <div class="exp-icon-wrap">
+          <!-- Ambassador SVG icon -->
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="14" r="7" fill="none" stroke="#00f0ff" stroke-width="1"/>
+            <path d="M 8 38 Q 22 28 36 38" fill="none" stroke="#00f0ff" stroke-width="1"/>
+            <circle cx="22" cy="14" r="3" fill="rgba(0,240,255,0.2)"/>
+            <line x1="22" y1="7" x2="22" y2="4" stroke="#ffe600" stroke-width="1"/>
+            <line x1="29" y1="9" x2="31" y2="7" stroke="#ffe600" stroke-width="1"/>
+            <line x1="15" y1="9" x2="13" y2="7" stroke="#ffe600" stroke-width="1"/>
+          </svg>
+        </div>
+        <div>
+          <div class="exp-role">Campus Ambassador</div>
+          <div class="exp-company">Basti Ki Pathshala Foundation</div>
+          <div class="exp-desc">Represented the NGO on campus, organizing outreach activities and driving awareness campaigns for educational initiatives in underserved communities.</div>
+        </div>
+        <div class="exp-badge badge-done">COMPLETED</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal"><span class="section-title">Projects</span></div>
+  <div class="projects-grid">
+
+    <!-- PROJECT 1: Farm Fusion AI -->
+    <div class="project-card reveal">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <!-- Background grid -->
+          <defs>
+            <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,255,65,0.08)" stroke-width="0.5"/>
+            </pattern>
+            <filter id="glow1">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <rect width="400" height="180" fill="url(#grid1)"/>
+
+          <!-- Main image frame / monitor -->
+          <rect x="30" y="20" width="200" height="140" rx="3" fill="none" stroke="rgba(0,255,65,0.5)" stroke-width="1.2"/>
+          <rect x="36" y="26" width="188" height="128" fill="rgba(0,255,65,0.04)"/>
+
+          <!-- Image layers inside frame (simulating image processing) -->
+          <rect x="42" y="32" width="80" height="55" rx="2" fill="rgba(0,255,65,0.07)" stroke="rgba(0,255,65,0.3)" stroke-width="0.8"/>
+          <rect x="48" y="38" width="68" height="43" rx="1" fill="rgba(0,255,65,0.12)"/>
+          <!-- landscape scene inside -->
+          <rect x="48" y="62" width="68" height="19" fill="rgba(0,100,0,0.4)"/>
+          <ellipse cx="82" cy="62" rx="14" ry="10" fill="rgba(0,180,0,0.35)"/>
+          <ellipse cx="62" cy="64" rx="10" ry="8" fill="rgba(0,160,0,0.3)"/>
+          <polygon points="82,38 90,58 74,58" fill="rgba(0,255,65,0.2)" stroke="rgba(0,255,65,0.4)" stroke-width="0.5"/>
+          <!-- sun -->
+          <circle cx="110" cy="42" r="6" fill="none" stroke="rgba(255,230,0,0.5)" stroke-width="1"/>
+          <line x1="110" y1="34" x2="110" y2="31" stroke="rgba(255,230,0,0.4)" stroke-width="0.8"/>
+          <line x1="118" y1="42" x2="121" y2="42" stroke="rgba(255,230,0,0.4)" stroke-width="0.8"/>
+
+          <!-- AI processing arrows -->
+          <line x1="136" y1="60" x2="158" y2="60" stroke="var(--cyan)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <polygon points="0 0, 6 3, 0 6" fill="var(--cyan)"/>
+            </marker>
+          </defs>
+          <text x="138" y="55" font-family="monospace" font-size="6" fill="rgba(0,240,255,0.7)">AI</text>
+
+          <!-- Enhanced image output -->
+          <rect x="160" y="32" width="55" height="55" rx="2" fill="rgba(0,255,65,0.07)" stroke="rgba(0,255,65,0.4)" stroke-width="0.8"/>
+          <rect x="166" y="38" width="43" height="43" rx="1" fill="rgba(0,50,0,0.5)"/>
+          <rect x="166" y="57" width="43" height="24" fill="rgba(0,120,0,0.5)"/>
+          <ellipse cx="188" cy="57" rx="10" ry="7" fill="rgba(0,220,0,0.5)"/>
+          <!-- scan lines on enhanced img -->
+          <line x1="166" y1="44" x2="209" y2="44" stroke="rgba(0,255,65,0.15)" stroke-width="0.5"/>
+          <line x1="166" y1="50" x2="209" y2="50" stroke="rgba(0,255,65,0.1)" stroke-width="0.5"/>
+
+          <!-- Bottom: processing metrics -->
+          <text x="42" y="108" font-family="monospace" font-size="7" fill="rgba(0,255,65,0.7)">&#62; enhance.run()</text>
+          <text x="42" y="120" font-family="monospace" font-size="7" fill="rgba(0,240,255,0.6)">&#62; accuracy: 96.4%</text>
+          <text x="42" y="132" font-family="monospace" font-size="7" fill="rgba(255,230,0,0.6)">&#62; model: CNN_v2</text>
+          <rect x="42" y="138" width="100" height="5" rx="1" fill="rgba(0,255,65,0.1)"/>
+          <rect x="42" y="138" width="87" height="5" rx="1" fill="rgba(0,255,65,0.4)">
+            <animate attributeName="width" from="0" to="87" dur="2s" fill="freeze"/>
+          </rect>
+          <text x="148" y="143" font-family="monospace" font-size="6" fill="rgba(0,255,65,0.6)">87%</text>
+
+          <!-- Right side panel: AI neural net visual -->
+          <g opacity="0.75" filter="url(#glow1)">
+            <!-- nodes -->
+            <circle cx="268" cy="40" r="4" fill="none" stroke="var(--green)" stroke-width="1"/>
+            <circle cx="268" cy="60" r="4" fill="none" stroke="var(--green)" stroke-width="1"/>
+            <circle cx="268" cy="80" r="4" fill="none" stroke="var(--green)" stroke-width="1"/>
+            <circle cx="268" cy="100" r="4" fill="none" stroke="var(--green)" stroke-width="1"/>
+
+            <circle cx="310" cy="50" r="4" fill="none" stroke="var(--cyan)" stroke-width="1"/>
+            <circle cx="310" cy="70" r="4" fill="none" stroke="var(--cyan)" stroke-width="1"/>
+            <circle cx="310" cy="90" r="4" fill="none" stroke="var(--cyan)" stroke-width="1"/>
+
+            <circle cx="352" cy="60" r="5" fill="rgba(0,255,65,0.3)" stroke="var(--green)" stroke-width="1.2"/>
+            <circle cx="352" cy="80" r="5" fill="rgba(0,255,65,0.3)" stroke="var(--green)" stroke-width="1.2"/>
+
+            <!-- connections -->
+            <line x1="272" y1="40" x2="306" y2="50" stroke="rgba(0,255,65,0.25)" stroke-width="0.7"/>
+            <line x1="272" y1="40" x2="306" y2="70" stroke="rgba(0,255,65,0.15)" stroke-width="0.7"/>
+            <line x1="272" y1="60" x2="306" y2="50" stroke="rgba(0,255,65,0.2)" stroke-width="0.7"/>
+            <line x1="272" y1="60" x2="306" y2="70" stroke="rgba(0,255,65,0.2)" stroke-width="0.7"/>
+            <line x1="272" y1="60" x2="306" y2="90" stroke="rgba(0,255,65,0.15)" stroke-width="0.7"/>
+            <line x1="272" y1="80" x2="306" y2="70" stroke="rgba(0,255,65,0.2)" stroke-width="0.7"/>
+            <line x1="272" y1="80" x2="306" y2="90" stroke="rgba(0,255,65,0.2)" stroke-width="0.7"/>
+            <line x1="272" y1="100" x2="306" y2="90" stroke="rgba(0,255,65,0.2)" stroke-width="0.7"/>
+            <line x1="314" y1="50" x2="347" y2="60" stroke="rgba(0,240,255,0.25)" stroke-width="0.7"/>
+            <line x1="314" y1="70" x2="347" y2="60" stroke="rgba(0,240,255,0.2)" stroke-width="0.7"/>
+            <line x1="314" y1="70" x2="347" y2="80" stroke="rgba(0,240,255,0.2)" stroke-width="0.7"/>
+            <line x1="314" y1="90" x2="347" y2="80" stroke="rgba(0,240,255,0.2)" stroke-width="0.7"/>
+          </g>
+
+          <!-- label -->
+          <text x="248" y="120" font-family="monospace" font-size="7" fill="rgba(0,255,65,0.5)">Neural Net</text>
+          <text x="248" y="130" font-family="monospace" font-size="6" fill="rgba(0,240,255,0.4)">Image Model</text>
+
+          <!-- floating particles -->
+          <circle cx="250" cy="155" r="2" fill="rgba(0,255,65,0.5)"><animate attributeName="cy" values="155;145;155" dur="3s" repeatCount="indefinite"/></circle>
+          <circle cx="270" cy="162" r="1.5" fill="rgba(0,240,255,0.5)"><animate attributeName="cy" values="162;152;162" dur="2.5s" repeatCount="indefinite"/></circle>
+          <circle cx="300" cy="158" r="1" fill="rgba(255,230,0,0.5)"><animate attributeName="cy" values="158;148;158" dur="4s" repeatCount="indefinite"/></circle>
+          <text x="240" y="170" font-family="monospace" font-size="7" fill="rgba(0,255,65,0.3)">&#62;&#95; FARM_FUSION_AI.py</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-id">// PROJECT_001 &nbsp;·&nbsp; AI / IMAGE PROCESSING</div>
+        <div class="project-title">FARM FUSION AI</div>
+        <div class="project-desc">An AI-powered image processing system with smart visual enhancement, automated feature extraction, and real-time AI integration. Built for efficient and interactive user experience with CNN-based models and intelligent pipelines.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Machine Learning</span>
+          <span class="project-tag">CNN</span>
+          <span class="project-tag">Image Processing</span>
+          <span class="project-tag">FastAPI</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-status"><span class="project-status-dot"></span>DEPLOYED</span>
+          <span style="color:rgba(184,255,202,0.35);font-size:0.65rem;letter-spacing:1px;">AI · AUTOMATION</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: Med24-Tech Website -->
+    <div class="project-card reveal">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,240,255,0.06)" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="180" fill="url(#grid2)"/>
+
+          <!-- Browser mockup -->
+          <rect x="20" y="15" width="220" height="150" rx="4" fill="none" stroke="rgba(0,240,255,0.4)" stroke-width="1.2"/>
+          <!-- browser chrome -->
+          <rect x="20" y="15" width="220" height="22" fill="rgba(0,240,255,0.07)" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+          <circle cx="32" cy="26" r="3" fill="rgba(255,0,64,0.6)"/>
+          <circle cx="42" cy="26" r="3" fill="rgba(255,230,0,0.6)"/>
+          <circle cx="52" cy="26" r="3" fill="rgba(0,255,65,0.6)"/>
+          <!-- URL bar -->
+          <rect x="60" y="20" width="120" height="12" rx="2" fill="rgba(0,240,255,0.06)" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+          <text x="65" y="29" font-family="monospace" font-size="5" fill="rgba(0,240,255,0.5)">med24-tech.com</text>
+
+          <!-- Website content area -->
+          <!-- Hero section of website -->
+          <rect x="24" y="40" width="212" height="40" fill="rgba(0,240,255,0.05)"/>
+          <!-- Cross/medical icon in hero -->
+          <rect x="34" y="48" width="4" height="14" rx="1" fill="rgba(0,240,255,0.6)"/>
+          <rect x="30" y="52" width="12" height="4" rx="1" fill="rgba(0,240,255,0.6)"/>
+          <!-- hero text lines -->
+          <rect x="54" y="48" width="90" height="5" rx="1" fill="rgba(0,240,255,0.35)"/>
+          <rect x="54" y="57" width="65" height="4" rx="1" fill="rgba(0,240,255,0.2)"/>
+          <rect x="54" y="65" width="45" height="6" rx="2" fill="rgba(0,240,255,0.2)" stroke="rgba(0,240,255,0.4)" stroke-width="0.5"/>
+
+          <!-- Cards row -->
+          <rect x="24" y="85" width="60" height="45" rx="2" fill="rgba(0,240,255,0.06)" stroke="rgba(0,240,255,0.2)" stroke-width="0.8"/>
+          <rect x="90" y="85" width="60" height="45" rx="2" fill="rgba(0,240,255,0.06)" stroke="rgba(0,240,255,0.2)" stroke-width="0.8"/>
+          <rect x="156" y="85" width="60" height="45" rx="2" fill="rgba(0,240,255,0.06)" stroke="rgba(0,240,255,0.2)" stroke-width="0.8"/>
+
+          <!-- Card 1: Doctor icon -->
+          <circle cx="54" cy="99" r="7" fill="none" stroke="rgba(0,240,255,0.4)" stroke-width="0.8"/>
+          <line x1="54" y1="106" x2="54" y2="118" stroke="rgba(0,240,255,0.35)" stroke-width="0.8"/>
+          <line x1="47" y1="110" x2="61" y2="110" stroke="rgba(0,240,255,0.35)" stroke-width="0.8"/>
+          <rect x="30" y="120" width="48" height="3" rx="1" fill="rgba(0,240,255,0.2)"/>
+
+          <!-- Card 2: Heart pulse -->
+          <polyline points="97,107 103,107 106,98 111,116 115,103 119,107 125,107 128,107" fill="none" stroke="rgba(255,0,64,0.7)" stroke-width="1.2"/>
+          <rect x="97" y="120" width="46" height="3" rx="1" fill="rgba(0,240,255,0.2)"/>
+
+          <!-- Card 3: Pill/medicine -->
+          <ellipse cx="186" cy="104" rx="10" ry="6" fill="none" stroke="rgba(0,240,255,0.5)" stroke-width="0.8"/>
+          <line x1="176" y1="104" x2="196" y2="104" stroke="rgba(0,240,255,0.4)" stroke-width="0.5"/>
+          <ellipse cx="186" cy="104" rx="10" ry="6" fill="none" stroke="rgba(0,240,255,0.3)" stroke-width="0.3"/>
+          <rect x="162" y="120" width="48" height="3" rx="1" fill="rgba(0,240,255,0.2)"/>
+
+          <!-- Responsive lines bottom -->
+          <rect x="24" y="136" width="212" height="3" rx="1" fill="rgba(0,240,255,0.1)"/>
+          <rect x="24" y="143" width="160" height="3" rx="1" fill="rgba(0,240,255,0.07)"/>
+          <rect x="24" y="150" width="100" height="3" rx="1" fill="rgba(0,240,255,0.07)"/>
+
+          <!-- Right side: tech stack badges -->
+          <g>
+            <rect x="255" y="20" width="130" height="140" rx="2" fill="rgba(0,20,30,0.4)" stroke="rgba(0,240,255,0.15)" stroke-width="0.8"/>
+            <text x="262" y="36" font-family="monospace" font-size="6.5" fill="rgba(0,240,255,0.5)">// TECH STACK</text>
+
+            <rect x="262" y="42" width="108" height="14" rx="2" fill="rgba(0,240,255,0.07)" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+            <text x="267" y="52" font-family="monospace" font-size="7" fill="rgba(0,240,255,0.8)">&#60;/ &#62; HTML5 + CSS3</text>
+
+            <rect x="262" y="60" width="108" height="14" rx="2" fill="rgba(0,240,255,0.07)" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+            <text x="267" y="70" font-family="monospace" font-size="7" fill="rgba(0,240,255,0.8)">⚙ JavaScript</text>
+
+            <rect x="262" y="78" width="108" height="14" rx="2" fill="rgba(0,240,255,0.07)" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+            <text x="267" y="88" font-family="monospace" font-size="7" fill="rgba(0,240,255,0.8)">⚛ React</text>
+
+            <rect x="262" y="96" width="108" height="14" rx="2" fill="rgba(0,240,255,0.07)" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+            <text x="267" y="106" font-family="monospace" font-size="7" fill="rgba(0,240,255,0.8)">📱 Responsive UI</text>
+
+            <rect x="262" y="114" width="108" height="14" rx="2" fill="rgba(0,240,255,0.07)" stroke="rgba(0,240,255,0.2)" stroke-width="0.5"/>
+            <text x="267" y="124" font-family="monospace" font-size="7" fill="rgba(0,240,255,0.8)">✦ Smooth UX</text>
+
+            <!-- Perf bar -->
+            <text x="262" y="145" font-family="monospace" font-size="6" fill="rgba(0,240,255,0.4)">Performance</text>
+            <rect x="262" y="148" width="108" height="5" rx="1" fill="rgba(0,240,255,0.08)"/>
+            <rect x="262" y="148" width="98" height="5" rx="1" fill="rgba(0,240,255,0.4)">
+              <animate attributeName="width" from="0" to="98" dur="2.5s" fill="freeze"/>
+            </rect>
+          </g>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-id">// PROJECT_002 &nbsp;·&nbsp; WEB DEVELOPMENT</div>
+        <div class="project-title">MED24-TECH WEBSITE</div>
+        <div class="project-desc">A fully responsive healthcare website for Med24-Tech featuring modern UI design, medical services showcase, smooth animations, and user-friendly navigation. Optimized for performance and accessibility across all devices.</div>
+        <div class="project-tags">
+          <span class="project-tag">HTML5</span>
+          <span class="project-tag">CSS3</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">React</span>
+          <span class="project-tag">Responsive</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-status" style="color:var(--cyan);"><span class="project-status-dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></span>LIVE</span>
+          <span style="color:rgba(184,255,202,0.35);font-size:0.65rem;letter-spacing:1px;">HEALTHCARE · WEB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: Mind Scan AI -->
+    <div class="project-card reveal">
+      <div class="project-visual">
+        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <pattern id="grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,0,64,0.06)" stroke-width="0.5"/>
+            </pattern>
+            <radialGradient id="brainGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,0,64,0.15)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="180" fill="url(#grid3)"/>
+
+          <!-- Brain silhouette (SVG path) -->
+          <g transform="translate(30,10)">
+            <ellipse cx="70" cy="65" rx="28" ry="22" fill="none" stroke="rgba(255,0,64,0.5)" stroke-width="1.2"/>
+            <ellipse cx="105" cy="65" rx="28" ry="22" fill="none" stroke="rgba(255,0,64,0.5)" stroke-width="1.2"/>
+            <!-- brain center line -->
+            <line x1="87" y1="45" x2="87" y2="85" stroke="rgba(255,0,64,0.3)" stroke-width="0.8" stroke-dasharray="3,2"/>
+            <!-- brain glow -->
+            <ellipse cx="87" cy="65" rx="46" ry="26" fill="url(#brainGlow)"/>
+            <!-- neural pulse lines -->
+            <polyline points="50,65 58,55 64,72 70,58 76,68 82,60 88,65" fill="none" stroke="rgba(255,100,100,0.6)" stroke-width="1">
+              <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite"/>
+            </polyline>
+            <polyline points="92,65 98,58 104,70 110,55 116,68 122,60" fill="none" stroke="rgba(255,100,100,0.6)" stroke-width="1"/>
+            <!-- emotion nodes -->
+            <circle cx="60" cy="58" r="3" fill="rgba(255,0,64,0.4)" stroke="rgba(255,100,100,0.6)" stroke-width="0.8">
+              <animate attributeName="r" values="3;4.5;3" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="115" cy="62" r="3" fill="rgba(255,230,0,0.4)" stroke="rgba(255,230,0,0.6)" stroke-width="0.8">
+              <animate attributeName="r" values="3;4;3" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="87" cy="70" r="4" fill="rgba(0,255,65,0.3)" stroke="rgba(0,255,65,0.6)" stroke-width="0.8">
+              <animate attributeName="r" values="4;5.5;4" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          <!-- Chat interface mockup on right -->
+          <rect x="175" y="12" width="210" height="158" rx="3" fill="rgba(10,0,5,0.5)" stroke="rgba(255,0,64,0.3)" stroke-width="1"/>
+          <!-- header -->
+          <rect x="175" y="12" width="210" height="22" fill="rgba(255,0,64,0.08)" stroke="rgba(255,0,64,0.2)" stroke-width="0.5"/>
+          <circle cx="186" cy="23" r="4" fill="rgba(255,0,64,0.5)"/>
+          <text x="196" y="27" font-family="monospace" font-size="6.5" fill="rgba(255,100,100,0.7)">MIND_SCAN_AI</text>
+          <circle cx="376" cy="23" r="3" fill="rgba(0,255,65,0.6)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Chat bubbles -->
+          <!-- User bubble -->
+          <rect x="230" y="42" width="145" height="22" rx="10" fill="rgba(255,0,64,0.12)" stroke="rgba(255,0,64,0.25)" stroke-width="0.7"/>
+          <text x="238" y="56" font-family="monospace" font-size="6" fill="rgba(255,150,150,0.8)">I'm feeling anxious today...</text>
+
+          <!-- AI bubble -->
+          <rect x="182" y="72" width="155" height="28" rx="10" fill="rgba(0,255,65,0.07)" stroke="rgba(0,255,65,0.2)" stroke-width="0.7"/>
+          <text x="190" y="84" font-family="monospace" font-size="6" fill="rgba(184,255,202,0.8)">[ANALYZING SENTIMENT]</text>
+          <text x="190" y="94" font-family="monospace" font-size="6" fill="rgba(184,255,202,0.7)">Emotion: Anxiety (78%)</text>
+
+          <!-- User bubble 2 -->
+          <rect x="230" y="110" width="140" height="22" rx="10" fill="rgba(255,0,64,0.12)" stroke="rgba(255,0,64,0.25)" stroke-width="0.7"/>
+          <text x="238" y="124" font-family="monospace" font-size="6" fill="rgba(255,150,150,0.8)">What should I do?</text>
+
+          <!-- AI response bubble -->
+          <rect x="182" y="140" width="155" height="22" rx="10" fill="rgba(0,255,65,0.07)" stroke="rgba(0,255,65,0.2)" stroke-width="0.7"/>
+          <text x="190" y="154" font-family="monospace" font-size="6" fill="rgba(184,255,202,0.8)">Predictive response loading...</text>
+          <rect x="190" y="158" width="60" height="2" rx="1" fill="rgba(0,255,65,0.3)">
+            <animate attributeName="width" values="0;60;0" dur="1.5s" repeatCount="indefinite"/>
+          </rect>
+
+          <!-- Emotion labels on brain side -->
+          <text x="30" y="105" font-family="monospace" font-size="6" fill="rgba(255,0,64,0.6)">● ANXIETY</text>
+          <text x="30" y="117" font-family="monospace" font-size="6" fill="rgba(255,230,0,0.6)">● STRESS</text>
+          <text x="30" y="129" font-family="monospace" font-size="6" fill="rgba(0,255,65,0.6)">● CALM</text>
+          <text x="30" y="141" font-family="monospace" font-size="6" fill="rgba(0,240,255,0.6)">● JOY</text>
+          <!-- sentiment bar -->
+          <text x="30" y="158" font-family="monospace" font-size="6" fill="rgba(255,0,64,0.4)">Sentiment Score</text>
+          <rect x="30" y="162" width="130" height="5" rx="1" fill="rgba(255,0,64,0.08)"/>
+          <rect x="30" y="162" width="85" height="5" rx="1" fill="rgba(255,0,64,0.35)">
+            <animate attributeName="width" from="0" to="85" dur="2s" fill="freeze"/>
+          </rect>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-id">// PROJECT_003 &nbsp;·&nbsp; AI / CHATBOT</div>
+        <div class="project-title">MIND SCAN AI</div>
+        <div class="project-desc">An AI-powered emotion analysis and predictive chat system that interprets user sentiments in real-time and generates intelligent, context-aware responses. Combines NLP, sentiment scoring, and chatbot technology for mental wellness support.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">NLP</span>
+          <span class="project-tag">Sentiment Analysis</span>
+          <span class="project-tag">Chatbot</span>
+          <span class="project-tag">AI/ML</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-status" style="color:var(--red);"><span class="project-status-dot" style="background:var(--red);box-shadow:0 0 6px var(--red)"></span>ACTIVE</span>
+          <span style="color:rgba(184,255,202,0.35);font-size:0.65rem;letter-spacing:1px;">AI · EMOTION · NLP</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header reveal"><span class="section-title">Education</span></div>
+  <div class="edu-grid">
+    <div class="panel reveal">
+      <div class="edu-card-inner">
+        <div class="edu-icon-wrap">
+          <!-- University SVG -->
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="22,4 40,14 40,16 22,8 4,16 4,14" fill="rgba(0,255,65,0.2)" stroke="#00ff41" stroke-width="1"/>
+            <rect x="8" y="16" width="8" height="18" fill="none" stroke="#00ff41" stroke-width="1"/>
+            <rect x="18" y="16" width="8" height="18" fill="none" stroke="#00ff41" stroke-width="1"/>
+            <rect x="28" y="16" width="8" height="18" fill="none" stroke="#00ff41" stroke-width="1"/>
+            <line x1="4" y1="34" x2="40" y2="34" stroke="#00ff41" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="edu-degree">B.Sc Computer Science</div>
+          <div class="edu-school">Sandip University, Nashik</div>
+          <div style="font-size:0.72rem;color:rgba(184,255,202,0.6);margin:4px 0;">Specialization: AI/ML &amp; Virtual Reality</div>
+          <div class="edu-year">2024 — 2027</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel reveal">
+      <div class="edu-card-inner">
+        <div class="edu-icon-wrap">
+          <!-- School SVG -->
+          <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="16" width="32" height="22" rx="1" fill="none" stroke="#00f0ff" stroke-width="1"/>
+            <polygon points="22,4 38,16 6,16" fill="none" stroke="#00f0ff" stroke-width="1"/>
+            <rect x="16" y="26" width="12" height="12" fill="none" stroke="#00f0ff" stroke-width="0.8"/>
+            <line x1="22" y1="26" x2="22" y2="38" stroke="#00f0ff" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="edu-degree">12th Science</div>
+          <div class="edu-school">Karmaveer Punjababa Goverdhane College</div>
+          <div style="font-size:0.72rem;color:rgba(184,255,202,0.6);margin:4px 0;">PCM — Science Stream</div>
+          <div class="edu-year">2023 — 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-header reveal"><span class="section-title">Certifications</span></div>
+  <div class="cert-list">
+    <div class="cert-item reveal"><span class="cert-icon">◈</span><span class="cert-name">CSS3 — Styling and Responsive Web Design</span></div>
+    <div class="cert-item reveal"><span class="cert-icon">◈</span><span class="cert-name">AI Adventure — Artificial Intelligence Program</span></div>
+    <div class="cert-item reveal"><span class="cert-icon">◈</span><span class="cert-name">GENAITHON — Generative AI Hackathon Participation</span></div>
+    <div class="cert-item reveal"><span class="cert-icon">◈</span><span class="cert-name">Infosys Internship Training Program</span></div>
+    <div class="cert-item reveal"><span class="cert-icon">◈</span><span class="cert-name">NPTEL — Organizational Behaviour</span></div>
+  </div>
+</section>
+
+<!-- THOUGHTS -->
+<section id="thoughts">
+  <div class="section-header reveal"><span class="section-title">Dev Insights</span></div>
+  <p style="font-size:0.75rem;color:rgba(184,255,202,0.4);margin-bottom:30px;letter-spacing:1px;" class="reveal">// My perspective on tech, growth, and the craft of building</p>
+  <div class="thoughts-grid">
+    <div class="thought-card reveal">
+      <div class="thought-header"><span>⚡</span> On AI/ML in 2025</div>
+      <div class="thought-text">We're past the hype cycle. Developers who will stand out go beyond calling APIs — understanding model architecture, fine-tuning, and prompt engineering as first-class disciplines. FastAPI + Python + a well-structured ML pipeline is one of the most employable tech stacks right now.</div>
+    </div>
+    <div class="thought-card reveal">
+      <div class="thought-header"><span>⚙</span> On Backend Engineering</div>
+      <div class="thought-text">FastAPI is genuinely excellent — async-first, auto-docs, Pydantic validation. But the real power comes pairing it with Docker and deploying on AWS EC2. Learning infrastructure early, not just code, makes you 10x more valuable than developers who only know the framework.</div>
+    </div>
+    <div class="thought-card reveal">
+      <div class="thought-header"><span>◉</span> On Learning as a Student</div>
+      <div class="thought-text">The gap between what colleges teach and what industry needs is real, but closeable. Every internship taught me more in 2 months than a semester of theory. Build things, break things, ship publicly. GitHub is your real resume — make it count.</div>
+    </div>
+    <div class="thought-card reveal">
+      <div class="thought-header"><span>⬡</span> On Cloud &amp; DevOps</div>
+      <div class="thought-text">AWS changed how I think about software permanently. Going from a local script to serving at scale behind EC2 with S3 storage shifts your mental model entirely. Even basic cloud fluency — VPCs, IAM, S3 policies — makes you a much stronger developer at any level.</div>
+    </div>
+    <div class="thought-card reveal">
+      <div class="thought-header"><span>◐</span> On Full Stack</div>
+      <div class="thought-text">Full stack doesn't mean mediocre at everything. It means owning a feature end-to-end — design the API, wire the React frontend, handle the DB schema, deploy it. That end-to-end ownership mindset is what fast-moving teams desperately need.</div>
+    </div>
+    <div class="thought-card reveal">
+      <div class="thought-header"><span>▲</span> The Road Ahead</div>
+      <div class="thought-text">AI + Cloud + Scalable Backend is the triangle that will define software engineering for the next decade. I'm positioning myself at that intersection intentionally — building genuine depth in Python, ML pipelines, and distributed systems while the field is still young enough to shape.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal"><span class="section-title">Contact</span></div>
+  <div class="panel reveal">
+    <div class="contact-grid">
+      <div class="contact-item" style="display:flex;flex-direction:column;gap:4px">
+        <span class="contact-label">Email</span>
+        <span class="contact-value"><a href="mailto:bhormayur15@gmail.com">bhormayur15@gmail.com</a></span>
+      </div>
+      <div class="contact-item" style="display:flex;flex-direction:column;gap:4px">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value"><a href="https://www.linkedin.com/in/mayur-bhor-125998333" target="_blank">linkedin.com/in/mayur-bhor</a></span>
+      </div>
+      <div class="contact-item" style="display:flex;flex-direction:column;gap:4px">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value"><a href="https://github.com/your-github-username" target="_blank">github.com/your-github-username</a></span>
+      </div>
+      <div class="contact-item" style="display:flex;flex-direction:column;gap:4px">
+        <span class="contact-label">Location</span>
+        <span class="contact-value location-val">Nashik, Maharashtra, India</span>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border);text-align:center;">
+      <a href="mailto:bhormayur15@gmail.com" class="btn btn-primary">&#62;_ SEND MESSAGE</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 Mayur Bhor. All Rights Reserved.</div>
+  <div class="footer-cmd">uptime: 365d 0h 0m &nbsp;|&nbsp; status: building</div>
+</footer>
+
+<!-- AI ASSISTANT -->
+<button id="ai-toggle" title="Ask AI Assistant" onclick="toggleAI()">
+  <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="7" width="22" height="16" rx="3" stroke="#00ff41" stroke-width="1.5"/>
+    <circle cx="10" cy="15" r="2" fill="#00ff41"/>
+    <circle cx="18" cy="15" r="2" fill="#00ff41"/>
+    <path d="M10 7 L10 4 M18 7 L18 4" stroke="#00ff41" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="10" cy="4" r="1" fill="#ff0040"/>
+    <circle cx="18" cy="4" r="1" fill="#ff0040"/>
+    <path d="M7 21 L5 25 M21 21 L23 25" stroke="#00ff41" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<div id="ai-panel">
+  <div class="ai-header">
+    <div class="ai-header-title">&#62;_ AI ASSISTANT</div>
+    <div class="ai-header-status"><div class="status-dot"></div>ONLINE</div>
+    <button id="ai-close" onclick="toggleAI()">✕</button>
+  </div>
+  <div class="ai-messages" id="ai-messages">
+    <div class="ai-msg bot">Hello! I'm Mayur's AI assistant. Ask me anything about his skills, experience, projects, or tech stack. I'm here to help! 🚀</div>
+  </div>
+  <div class="ai-input-row">
+    <input type="text" id="ai-input" placeholder="> Ask something..." onkeydown="if(event.key==='Enter') sendMsg()"/>
+    <button class="ai-send" onclick="sendMsg()">SEND</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CUSTOM CURSOR
+============================================================ */
+const co = document.getElementById('cursor-outer');
+const ci = document.getElementById('cursor-inner');
+let mx=0, my=0, ox=0, oy=0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  ci.style.left = mx+'px'; ci.style.top = my+'px';
+});
+
+function animateCursor() {
+  ox += (mx - ox) * 0.12;
+  oy += (my - oy) * 0.12;
+  co.style.left = ox+'px'; co.style.top = oy+'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+/* ============================================================
+   MATRIX RAIN
+============================================================ */
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+function resizeCanvas() { canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ01ABCDEF><|{}[]#@!?▓░▒';
+const fs = 13;
+let drops = Array(Math.floor(canvas.width/fs)).fill(1);
+function drawMatrix() {
+  ctx.fillStyle='rgba(2,12,2,0.05)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  for(let i=0;i<drops.length;i++) {
+    const bright = Math.random() > 0.95;
+    ctx.fillStyle = bright ? '#ffffff' : '#00ff41';
+    ctx.font=fs+'px Share Tech Mono';
+    ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*fs,drops[i]*fs);
+    if(drops[i]*fs>canvas.height&&Math.random()>0.975) drops[i]=0;
+    drops[i]++;
+  }
+}
+setInterval(drawMatrix, 40);
+
+/* ============================================================
+   TYPEWRITER
+============================================================ */
+const lines = [
+  '> Initializing profile...',
+  '> Loading skill modules: [Python] [FastAPI] [React] [AWS]',
+  '> AI/ML subsystem: online',
+  '> Docker containers: running',
+  '> Status: Ready to build something great.'
+];
+let li=0,ci2=0;
+const twEl = document.getElementById('typewriter');
+function type() {
+  if(li>=lines.length) return;
+  if(ci2<lines[li].length) {
+    const done = lines.slice(0,li).join('\n');
+    const current = lines[li].substring(0,ci2+1);
+    twEl.innerHTML=(done?(done+'\n'):'') + current + '<span class="cur"></span>';
+    ci2++; setTimeout(type,28);
+  } else {
+    setTimeout(()=>{ li++; ci2=0; if(li<lines.length){setTimeout(type,180);} else { twEl.innerHTML=lines.join('\n'); }},600);
+  }
+}
+setTimeout(type, 2200);
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.08});
+revEls.forEach(r=>revObs.observe(r));
+
+/* ============================================================
+   COUNTER ANIMATION
+============================================================ */
+function animateCounters() {
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const target=parseInt(el.dataset.target);
+    let cur=0;
+    const step=Math.ceil(target/30);
+    const t=setInterval(()=>{ cur=Math.min(cur+step,target); el.textContent=cur+'+'; if(cur>=target)clearInterval(t); },40);
+  });
+}
+const statsBar=document.querySelector('.stats-bar');
+const sObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){animateCounters();sObs.disconnect();}
+},{threshold:0.5});
+sObs.observe(statsBar);
+
+/* ============================================================
+   AI ASSISTANT
+============================================================ */
+let aiOpen = false;
+function toggleAI() {
+  aiOpen = !aiOpen;
+  document.getElementById('ai-panel').classList.toggle('open', aiOpen);
+}
+
+const PORTFOLIO_CONTEXT = `
+You are an AI assistant embedded in Mayur Bhor's portfolio website. Answer questions about Mayur concisely and in character (hacker/terminal style). Keep answers short, 2-4 sentences. Add a terminal flair.
+
+About Mayur Bhor:
+- Computer Science student at Sandip University, Nashik, specializing in AI/ML and Virtual Reality
+- Currently Python Developer at Pravara Infotech (Aug 2025 - Present)
+- Internships: Web Dev Intern at Cognifyz Technologies, Content Writing Intern at Brainwave Matrix Solutions, Campus Ambassador at Basti Ki Pathshala Foundation
+- Skills: Python, Java, JavaScript, FastAPI, REST APIs, React, Docker, Linux, MySQL, MongoDB, AWS EC2, AWS S3, Machine Learning, Git, GitHub, Cloud Computing, HTML, CSS
+- Education: B.Sc CS (AI/ML & VR) 2024-2027 at Sandip University; 12th Science at Karmaveer Punjababa Goverdhane College
+- Certifications: CSS3, AI Adventure, GENAITHON, Infosys Internship, NPTEL Organisational Behaviour
+- Email: bhormayur15@gmail.com | LinkedIn: linkedin.com/in/mayur-bhor-125998333
+- Located in Nashik, Maharashtra, India
+- Projects: Farm Fusion AI (AI image processing/CNN), Med24-Tech Website (responsive healthcare site with React), Mind Scan AI (emotion analysis + chatbot NLP)
+`;
+
+async function sendMsg() {
+  const input = document.getElementById('ai-input');
+  const msg = input.value.trim();
+  if(!msg) return;
+  input.value = '';
+
+  const msgsDiv = document.getElementById('ai-messages');
+
+  // add user msg
+  msgsDiv.innerHTML += `<div class="ai-msg user">${msg}</div>`;
+
+  // thinking
+  const thinkId = 'think-'+Date.now();
+  msgsDiv.innerHTML += `<div class="ai-msg thinking ai-dot-anim" id="${thinkId}">Processing</div>`;
+  msgsDiv.scrollTop = msgsDiv.scrollHeight;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system: PORTFOLIO_CONTEXT,
+        messages:[{role:'user',content:msg}]
+      })
+    });
+    const data = await res.json();
+    const reply = data.content && data.content[0] ? data.content[0].text : 'ERROR: No response received.';
+    document.getElementById(thinkId).remove();
+    msgsDiv.innerHTML += `<div class="ai-msg bot">${reply}</div>`;
+  } catch(e) {
+    document.getElementById(thinkId).remove();
+    msgsDiv.innerHTML += `<div class="ai-msg bot" style="color:var(--red)">CONNECTION ERROR: Unable to reach AI backend. Check console for details.</div>`;
+  }
+  msgsDiv.scrollTop = msgsDiv.scrollHeight;
+}
+</script>
+</body>
+</html>
+
 
 
 
