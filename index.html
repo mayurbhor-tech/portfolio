@@ -134,4 +134,45 @@ body::after {
 /* ============================================================
    NAV
 ============================================================ */
+   nav {
+  position:fixed; top:0; width:100%;
+  z-index:1000;
+  background: rgba(2,12,2,0.93);
+  border-bottom:1px solid var(--border);
+  backdrop-filter: blur(8px);
+  padding: 0 6%;
+  display:flex; justify-content:space-between; align-items:center;
+  height:60px;
+}
+
+.nav-logo {
+  font-family:'Orbitron',monospace; font-weight:900; font-size:1rem;
+  color:var(--green); text-shadow:0 0 12px var(--green); letter-spacing:3px;
+}
+.nav-logo span { color:var(--red); }
+
+nav ul { display:flex; gap:24px; list-style:none; }
+nav a {
+  color:var(--text); text-decoration:none; font-size:0.7rem;
+  letter-spacing:1.5px; text-transform:uppercase; transition:0.2s; position:relative;
+}
+nav a::after {
+  content:''; position:absolute; bottom:-3px; left:0;
+  width:0; height:1px; background:var(--green);
+  box-shadow:0 0 6px var(--green); transition:0.3s;
+}
+nav a:hover { color:var(--green); text-shadow:0 0 8px var(--green); }
+nav a:hover::after { width:100%; }
+
+.nav-status {
+  display:flex; align-items:center; gap:6px;
+  font-size:0.68rem; color:var(--green-dim);
+}
+.status-dot {
+  width:7px; height:7px; background:var(--green);
+  border-radius:50%; box-shadow:0 0 8px var(--green);
+  animation:blink 1.4s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
 
