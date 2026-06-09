@@ -293,5 +293,44 @@ nav a:hover::after { width:100%; }
   position:relative; overflow:hidden; cursor:none;
 }
 
+btn::before {
+  content:''; position:absolute; top:0; left:-100%;
+  width:100%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(0,255,65,0.2), transparent);
+  transition:0.4s;
+}
+.btn:hover::before { left:100%; }
+.btn-primary {
+  background:var(--green); color:var(--dark);
+  border:1px solid var(--green); box-shadow:0 0 20px rgba(0,255,65,0.3);
+}
+.btn-primary:hover { background:transparent; color:var(--green); box-shadow:0 0 40px rgba(0,255,65,0.6); }
+.btn-outline { background:transparent; color:var(--green); border:1px solid var(--green); }
+.btn-outline:hover { background:var(--green-glow); box-shadow:0 0 20px rgba(0,255,65,0.3); }
+.btn-cyan { background:transparent; color:var(--cyan); border:1px solid var(--cyan); }
+.btn-cyan:hover { background:rgba(0,240,255,0.1); box-shadow:0 0 20px rgba(0,240,255,0.3); }
+
+/* ============================================================
+   STATS BAR
+============================================================ */
+.stats-bar {
+  position:relative; z-index:2;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  background:rgba(0,255,65,0.03);
+  padding:20px 6%; display:flex; justify-content:center;
+  gap:clamp(30px,6vw,80px); flex-wrap:wrap;
+}
+.stat-item { text-align:center; }
+.stat-num {
+  font-family:'Orbitron',monospace; font-size:1.8rem; font-weight:700;
+  color:var(--green); text-shadow:0 0 12px rgba(0,255,65,0.5); display:block;
+}
+.stat-label { font-size:0.62rem; letter-spacing:2px; color:rgba(184,255,202,0.5); text-transform:uppercase; }
+
+/* ============================================================
+   SECTIONS
+============================================================ */
+section { position:relative; z-index:2; padding:90px 8%; }
+
 
 
